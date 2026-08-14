@@ -1,4 +1,4 @@
-# Learn-Golang
+# Learn Go
 
 A few things about Go:
 
