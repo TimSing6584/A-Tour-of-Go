@@ -260,3 +260,22 @@ for i, _ := range pow
 for _, value := range pow
 ```
 - **If we only want the index, we can omit the second variable entirely**
+
+# 13. Maps:
+
+```bash
+# Maps
+m := make(map[string]int)        // empty map
+m := map[string]int{"a": 1}      // map literal
+m["key"] = 1                     // insert/update
+v := m["key"]                    // get
+v, ok := m["key"]                // ok = false if key doesn't exist
+delete(m, "key")                 // delete
+```
+
+# 14. Function values:
+- Functions are values too. They can be passed around just like other values.
+- Function values may be used as function arguments and return values.
+
+# 15. Function closures:
+- A closure is a function value that references variables from outside its body. The function may access and assign to the referenced variables; in this sense the function is "bound" to the variables.
