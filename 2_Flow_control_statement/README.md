@@ -138,3 +138,39 @@ func main() {
     fmt.Println("done")
 }
 ```
+
+# 6. sync.Mutex:
+
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+```go
+type SafeCounter struct {
+    mu sync.Mutex
+    v  int
+}
+
+func (c *SafeCounter) Inc() {
+    c.mu.Lock()
+    c.v++
+    c.mu.Unlock()
+}
+
+func (c *SafeCounter) Value() int {
+    c.mu.Lock()
+    defer c.mu.Unlock()  // defer unlocks when function returns
+    return c.v
+}
+
+func main() {
+    c := SafeCounter{}
+    for i := 0; i < 1000; i++ {
+        go c.Inc()
+    }
+    time.Sleep(time.Second)
+    fmt.Println(c.Value())  // always 1000
+}
+```
+
+![alt text](image-2.png)
